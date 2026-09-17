@@ -50,42 +50,42 @@ function Login() {
     };
 
     return (
-        <div>
-            <h1>Login</h1>
+        <main className="auth-page">
+            <section className="auth-aside">
+                <div className="brand"><span className="brand-mark">T</span> Taskspace</div>
+                <div className="aside-copy">
+                    <p className="eyebrow">A calmer way to work</p>
+                    <h1>Make room for meaningful progress.</h1>
+                    <p>Keep the important work visible, organized, and moving forward.</p>
+                </div>
+                <p className="aside-footer">Personal productivity, thoughtfully arranged.</p>
+            </section>
+            <section className="auth-main">
+                <div className="auth-card">
+                    <p className="eyebrow">Welcome back</p>
+                    <h1>Sign in</h1>
+                    <p className="auth-subtitle">Pick up where you left off.</p>
 
-            {error && <p>{error}</p>}
+                    {error && <p className="auth-error">{error}</p>}
 
-            <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-field">
+                            <label htmlFor="login-email">Email address</label>
+                            <input id="login-email" type="email" name="email" placeholder="you@example.com" value={formData.email} onChange={handleChange} required />
+                        </div>
 
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    value={formData.email}
-                    onChange={handleChange}
-                />
+                        <div className="form-field">
+                            <label htmlFor="login-password">Password</label>
+                            <input id="login-password" type="password" name="password" placeholder="Enter your password" value={formData.password} onChange={handleChange} required />
+                        </div>
 
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    value={formData.password}
-                    onChange={handleChange}
-                />
+                        <button className="primary-button" type="submit">Sign in to Taskspace</button>
+                    </form>
 
-                <button type="submit">
-                    Login
-                </button>
-
-            </form>
-
-            <p>
-                Don't have an account?{" "}
-                <Link to="/register">
-                    Register
-                </Link>
-            </p>
-        </div>
+                    <p className="auth-switch">New to Taskspace? <Link to="/register">Create an account</Link></p>
+                </div>
+            </section>
+        </main>
     );
 }
 

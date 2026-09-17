@@ -51,50 +51,47 @@ function Register() {
     };
 
     return (
-        <div>
-            <h1>Create Account</h1>
+        <main className="auth-page">
+            <section className="auth-aside">
+                <div className="brand"><span className="brand-mark">T</span> Taskspace</div>
+                <div className="aside-copy">
+                    <p className="eyebrow">Build your rhythm</p>
+                    <h1>Small steps. Clear direction.</h1>
+                    <p>Turn open loops into a simple, satisfying plan for the day ahead.</p>
+                </div>
+                <p className="aside-footer">Personal productivity, thoughtfully arranged.</p>
+            </section>
+            <section className="auth-main">
+                <div className="auth-card">
+                    <p className="eyebrow">Get started</p>
+                    <h1>Create account</h1>
+                    <p className="auth-subtitle">A focused space for everything you want to finish.</p>
 
-            {error && <p>{error}</p>}
+                    {error && <p className="auth-error">{error}</p>}
 
-            <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-field">
+                            <label htmlFor="register-name">Your name</label>
+                            <input id="register-name" type="text" name="name" placeholder="Alex Morgan" value={formData.name} onChange={handleChange} required />
+                        </div>
 
-                <input
-                    type="text"
-                    name="name"
-                    placeholder="Name"
-                    value={formData.name}
-                    onChange={handleChange}
-                />
+                        <div className="form-field">
+                            <label htmlFor="register-email">Email address</label>
+                            <input id="register-email" type="email" name="email" placeholder="you@example.com" value={formData.email} onChange={handleChange} required />
+                        </div>
 
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    value={formData.email}
-                    onChange={handleChange}
-                />
+                        <div className="form-field">
+                            <label htmlFor="register-password">Password</label>
+                            <input id="register-password" type="password" name="password" placeholder="Choose a secure password" value={formData.password} onChange={handleChange} required />
+                        </div>
 
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    value={formData.password}
-                    onChange={handleChange}
-                />
+                        <button className="primary-button" type="submit">Create my workspace</button>
+                    </form>
 
-                <button type="submit">
-                    Register
-                </button>
-
-            </form>
-
-            <p>
-                Already have an account?{" "}
-                <Link to="/login">
-                    Login
-                </Link>
-            </p>
-        </div>
+                    <p className="auth-switch">Already have an account? <Link to="/login">Sign in</Link></p>
+                </div>
+            </section>
+        </main>
     );
 }
 

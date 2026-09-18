@@ -1,0 +1,30 @@
+services:
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: task-frontend-container
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./backend
+    container_name: task-backend-container
+    env_file:
+      - ./backend/.env
+    ports:
+      - "5001:5001"
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:7.0
+    container_name: task-mongo
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
